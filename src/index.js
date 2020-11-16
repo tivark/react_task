@@ -7,6 +7,8 @@ import {BeerDataProvider} from './components/beer-api-context'
 
 import BeerService from './services/beer-service';
 
+import './index.css';
+
 const beerService = new BeerService();
 
 ReactDOM.render(

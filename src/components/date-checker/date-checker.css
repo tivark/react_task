@@ -1,0 +1,13 @@
+.date-checker {
+    padding: 20px;
+}
+
+.date-checker__title{
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.date-options {
+    display: flex;
+    margin-bottom: 20px;
+}
