@@ -1,0 +1,7 @@
+.export-page-container{
+    width: 100%;
+}
+
+.export-page-container .panels-wrapper{
+    display: flex;
+}

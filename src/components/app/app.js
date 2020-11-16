@@ -1,19 +1,24 @@
 import React from 'react';
-import OptionsPanel from "../options-panel";
-import DataPanel from '../data-panel';
 import '@atlaskit/css-reset';
 import './app.css';
+import {BeerDataProvider} from "../beer-api-context";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import ExportPage from "../export-page";
 
 
 const App = () => {
   return (
-    <div className="main-wrapper">
-      <h1>Экспорт данных</h1>
-      <div className='panels-wrapper'>
-        <OptionsPanel/>
-        <DataPanel/>
-      </div>
-    </div>
+    <BeerDataProvider value={'test'}>
+      <Router>
+        <Switch>
+          <Route path='/' component={() => (<h1>Welcome</h1>)} exact/>
+          <Route path='/export/' component={ExportPage}/>
+          <Route render={() => {
+            return <h3>Page not found</h3>
+          }} />
+        </Switch>
+      </Router>
+    </BeerDataProvider>
   )
 }
 
