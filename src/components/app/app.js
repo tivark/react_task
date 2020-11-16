@@ -1,6 +1,7 @@
 import React from 'react';
 import OptionsPanel from "../options-panel";
 import DataPanel from '../data-panel';
+import '@atlaskit/css-reset';
 import './app.css';
 
 
