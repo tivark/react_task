@@ -1,0 +1,12 @@
+.attribute-list {
+    width: 100%;
+}
+
+.attribute-list:first-child{
+    margin-right: 20px;
+}
+
+.attribute-list__header {
+    display: flex;
+    justify-content: space-between;
+}

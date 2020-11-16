@@ -1,0 +1,8 @@
+.attribute-selector {
+    padding: 20px;
+}
+
+.attribute-selector__lists {
+    width: 100%;
+    display: flex;
+}
