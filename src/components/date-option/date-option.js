@@ -13,7 +13,7 @@ const DateOption = ({label, type}) => {
   return (
     <div className='date-option'>
       <label className='date-option__label'>{label}</label>
-      <TextField type='date' value={date} onChange={onDateChange}/>
+      <TextField type='datetime-local' value={date} onChange={onDateChange}/>
     </div>
   )
 }

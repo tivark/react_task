@@ -1,15 +1,21 @@
 import React, {useState} from "react";
-import AttributeList from "../attribute-list";
+import {connect} from 'react-redux';
+
 import {DragDropContext} from "react-beautiful-dnd";
+import AttributeList from "../attribute-list";
 
-
+import {baseLoaded} from "../../actions";
 import testObject from "../../services/test-object";
-
 import './attribute-selector.css';
 
-const AttributeSelector = () => {
+
+const AttributeSelector = (props) => {
 
   const [stateObj, setStateObj] = useState(testObject);
+
+  // useEffect(() => {
+  //   props.baseLoaded([]);
+  // }, [])
 
   const onDragEnd = (result) => {
     const {destination, source, draggableId} = result;
@@ -28,13 +34,13 @@ const AttributeSelector = () => {
     const finish = stateObj.columns[destination.droppableId]
 
     if (start === finish) {
-      const newTasksIds = Array.from(start.taskId);
-      newTasksIds.splice(source.index, 1);
-      newTasksIds.splice(destination.index, 0, draggableId);
+      const newItemsId = [...start.itemsId];
+      newItemsId.splice(source.index, 1);
+      newItemsId.splice(destination.index, 0, draggableId);
 
       const newColumn = {
         ...start,
-        taskId: newTasksIds
+        itemsId: newItemsId
       }
 
       const newState = {
@@ -48,18 +54,18 @@ const AttributeSelector = () => {
       return;
     }
 
-    const startTasksId = Array.from(start.taskId);
-    startTasksId.splice(source.index, 1);
+    const startItemsId = [...start.itemsId];
+    startItemsId.splice(source.index, 1);
     const startColumn = {
       ...start,
-      taskId: startTasksId
+      itemsId: startItemsId
     }
 
-    const finishTasksId = Array.from(finish.taskId);
-    finishTasksId.splice(destination.index, 0, draggableId);
+    const finishItemsId = Array.from(finish.itemsId);
+    finishItemsId.splice(destination.index, 0, draggableId);
     const finishColumn = {
       ...finish,
-      taskId: finishTasksId
+      itemsId: finishItemsId
     }
 
     const newState = {
@@ -81,10 +87,10 @@ const AttributeSelector = () => {
           {
             stateObj.columnOrder.map((columnId) => {
               const column = stateObj.columns[columnId];
-              const tasks = column.taskId.map((taskId) => {
-                return stateObj.tasks[taskId];
+              const items = column.itemsId.map((itemId) => {
+                return stateObj.items[itemId];
               });
-              return <AttributeList key={columnId} column={column} tasks={tasks}/>
+              return <AttributeList key={columnId} column={column} items={items}/>
             })
           }
         </DragDropContext>
@@ -93,4 +99,16 @@ const AttributeSelector = () => {
   )
 }
 
-export default AttributeSelector;
+const mapStateToProps = ({items, columns, columnOrder}) => {
+  return {
+    items,
+    columns,
+    columnOrder
+  }
+}
+
+const mapDispatchToProps = {
+  baseLoaded
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AttributeSelector);

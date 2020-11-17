@@ -1,6 +1,7 @@
 import React from "react";
 import OptionsPanel from "../options-panel";
 import DataPanel from "../data-panel";
+import RequestButton from "../request-button";
 
 import './export-page.css';
 
@@ -11,6 +12,7 @@ const ExportPage = () => {
       <div className='panels-wrapper'>
         <OptionsPanel/>
         <DataPanel/>
+        <RequestButton />
       </div>
     </div>
   )

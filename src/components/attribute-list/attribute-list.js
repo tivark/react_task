@@ -4,7 +4,7 @@ import {Droppable} from "react-beautiful-dnd";
 import AttributeItem from "../attribute-item";
 import './attribute-list.css';
 
-const AttributeList = ({column, tasks}) => {
+const AttributeList = ({column, items}) => {
 
   return (
     <div className='attribute-list'>
@@ -19,8 +19,8 @@ const AttributeList = ({column, tasks}) => {
               <div className='attribute-list__items'
                 ref={provided.innerRef}
                 {...provided.droppableProps}>
-                {tasks.map((task, index) => {
-                  return <AttributeItem key={task.id} id={task.id} content={task.content} index={index}/>
+                {items.map((item, index) => {
+                  return <AttributeItem key={item.id} id={item.id} content={item.content} index={index}/>
                 })}
                 {provided.placeholder}
               </div>

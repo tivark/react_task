@@ -1,12 +1,15 @@
-const initState = {
-  beers: []
-}
+import initObject from "../services/test-object";
 
-const reducer = (state = initState, action) => {
+const reducer = (state = initObject, action) => {
   switch (action.type) {
     case 'BASE_LOADED':
+      const itemsObj = {};
+      action.payload.forEach((item) => {
+        itemsObj[item.id] = item;
+      })
       return {
-        beers: action.payload
+        ...state,
+        items: itemsObj
       }
     default:
       return state;

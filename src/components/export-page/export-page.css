@@ -4,4 +4,5 @@
 
 .export-page-container .panels-wrapper{
     display: flex;
+    flex-wrap: wrap;
 }

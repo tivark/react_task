@@ -1,4 +1,4 @@
-import { beerApiUrl } from './api-url';
+import beerApiUrl from './api-url';
 
 export default class BeerService {
 
