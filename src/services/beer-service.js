@@ -1,16 +1,11 @@
-import beerApiUrl from './api-url';
+import {beerApiUrl} from './api-url';
 
 export default class BeerService {
 
-  getData() {
-    fetch(beerApiUrl)
-      .then(response => response.json())
-      .then(data => {
-
-      })
-      .catch(error => {
-        console.error(error.message);
-      })
+  async getData() {
+    const response = await fetch(beerApiUrl);
+    const data = await response.json();
+    return data;
   }
 
 }

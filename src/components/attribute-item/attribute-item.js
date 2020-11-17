@@ -4,6 +4,7 @@ import './attribute-item.css';
 import {Button} from "@material-ui/core";
 
 const AttributeItem = ({id, content, index}) => {
+  // const dragId = id + content[0];
   return (
     <Draggable draggableId={id} index={index}>
       {

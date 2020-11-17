@@ -20,7 +20,7 @@ const AttributeList = ({column, items}) => {
                 ref={provided.innerRef}
                 {...provided.droppableProps}>
                 {items.map((item, index) => {
-                  return <AttributeItem key={item.id} id={item.id} content={item.content} index={index}/>
+                  return <AttributeItem key={item.id} id={item.id} content={item.name} index={index}/>
                 })}
                 {provided.placeholder}
               </div>

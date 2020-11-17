@@ -8,10 +8,13 @@ import './index.css';
 
 import store from "./store";
 import {BeerDataProvider} from "./components/beer-api-context";
+import BeerService from "./services/beer-service";
+
+const beerService = new BeerService();
 
 ReactDOM.render(
   <Provider store={store}>
-    <BeerDataProvider value={'test'}>
+    <BeerDataProvider value={beerService}>
       <Router>
         <App/>
       </Router>
