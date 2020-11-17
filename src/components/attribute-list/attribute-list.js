@@ -12,7 +12,6 @@ const AttributeList = ({column, tasks}) => {
         <span className='attribute-list__title'>{column.title}</span>
         <Button variant='contained'>Добавить всё</Button>
       </span>
-
       <Droppable droppableId={column.id}>
         {
           (provided) => {
