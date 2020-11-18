@@ -17,7 +17,7 @@ const AttributeItem = (props) => {
     : <DeleteIcon/>;
 
   const onClickHandler = () => {
-    props.attributeRelocated(id);
+    props.attributeRelocate(id);
   }
 
   return (

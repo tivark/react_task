@@ -19,9 +19,17 @@ const attributeRelocate = (attributeId) => {
   }
 }
 
+const relocateAllAttributes = (fromColumnId) => {
+  return {
+    type: 'RELOCATE_ALL_ATTRIBUTES',
+    fromColumnId
+  }
+}
+
 
 export {
   baseLoaded,
   attributeDragEnd,
-  attributeRelocate
+  attributeRelocate,
+  relocateAllAttributes
 }

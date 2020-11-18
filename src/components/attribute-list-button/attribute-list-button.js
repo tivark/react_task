@@ -1,17 +1,30 @@
 import React from "react";
 import {Button} from "@material-ui/core";
+import {connect} from 'react-redux';
+import {relocateAllAttributes} from "../../actions";
 
 import './attribute-list-button.css';
 
-const AttributeListButton = ({type, isActive}) => {
-  let buttonText = '';
-  if (type === 'ADD_ALL') {
-    buttonText = 'Добавить всё';
+const AttributeListButton = (props) => {
+  const {type, isInactive, columnId} = props;
+  let buttonText = type === 'ADD_ALL' ? 'Добавить всё' : 'Удалить всё';
 
-  } else {
-    buttonText = 'Удалить всё'
+  const onClickHandler = ()=>{
+    props.relocateAllAttributes(columnId);
   }
-  return <Button variant='contained' disabled={isActive}>{buttonText}</Button>
+
+  return (
+    <Button
+      variant='contained'
+      disabled={isInactive}
+      onClick={onClickHandler}>
+      {buttonText}
+    </Button>
+  );
 }
 
-export default AttributeListButton;
+const mapDispatchToProps = {
+  relocateAllAttributes
+}
+
+export default connect(null, mapDispatchToProps)(AttributeListButton);

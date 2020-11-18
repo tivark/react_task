@@ -1,26 +1,19 @@
 import {initObject} from "../services/init-object";
 import attributeDragEndReducer from "./attribute-drag-end-reducer";
+import baseLoadedReducer from "./base-loaded-reducer";
+import relocateAttributeReducer from "./relocate-attribute-reducer";
+import relocateAllAttributesReducer from "./relocate-all-attributes-reducer";
 
 const reducer = (state = initObject, action) => {
   switch (action.type) {
     case 'BASE_LOADED':
-      const itemsObj = {};
-      action.payload.forEach((item) => {
-        item.id = item.id + item.name.split(' ').join('');
-        itemsObj[item.id] = item;
-      })
-      const itemsId = action.payload.map(item => item.id);
-      const column = {...state.columns['available'], itemsId: itemsId}
-      return {
-        ...state,
-        columns: {
-          ...state.columns,
-          'available': column
-        },
-        items: itemsObj
-      }
+      return baseLoadedReducer(state, action);
     case 'ATTRIBUTE_DRAG_END':
       return attributeDragEndReducer(state, action);
+    case 'RELOCATE_ATTRIBUTE':
+      return relocateAttributeReducer(state, action);
+    case 'RELOCATE_ALL_ATTRIBUTES':
+      return relocateAllAttributesReducer(state, action);
     default:
       return state;
   }
