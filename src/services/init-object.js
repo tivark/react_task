@@ -12,7 +12,11 @@ const initObject = {
       itemsId: []
     },
   },
-  columnOrder: ['available', 'selected']
+  columnOrder: ['available', 'selected'],
+  datePeriod:{
+    startDate: Date.now(),
+    endDate: Date.now()
+  }
 }
 
 export { initObject };

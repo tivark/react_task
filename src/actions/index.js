@@ -26,10 +26,19 @@ const relocateAllAttributes = (fromColumnId) => {
   }
 }
 
+const changeDate = (dateType, date) => {
+  return {
+    type:'CHANGE_DATE',
+    dateType,
+    date
+  }
+}
+
 
 export {
   baseLoaded,
   attributeDragEnd,
   attributeRelocate,
-  relocateAllAttributes
+  relocateAllAttributes,
+  changeDate
 }

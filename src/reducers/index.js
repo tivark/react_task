@@ -3,6 +3,8 @@ import attributeDragEndReducer from "./attribute-drag-end-reducer";
 import baseLoadedReducer from "./base-loaded-reducer";
 import relocateAttributeReducer from "./relocate-attribute-reducer";
 import relocateAllAttributesReducer from "./relocate-all-attributes-reducer";
+import changeDateReducer from "./change-date-reducer";
+
 
 const reducer = (state = initObject, action) => {
   switch (action.type) {
@@ -14,6 +16,8 @@ const reducer = (state = initObject, action) => {
       return relocateAttributeReducer(state, action);
     case 'RELOCATE_ALL_ATTRIBUTES':
       return relocateAllAttributesReducer(state, action);
+    case 'CHANGE_DATE':
+      return changeDateReducer(state, action);
     default:
       return state;
   }

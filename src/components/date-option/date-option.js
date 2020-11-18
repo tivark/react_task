@@ -1,21 +1,35 @@
-import React, {useState} from 'react';
-import {TextField} from "@material-ui/core";
+import React from 'react';
+import {connect} from 'react-redux';
+import {MuiPickersUtilsProvider} from "@material-ui/pickers";
+import {DateTimePicker} from "@material-ui/pickers";
+import DateFnsUtils from "@date-io/date-fns";
+import {changeDate} from "../../actions";
+
 import './date-option.css';
 
-const DateOption = ({label, type}) => {
-
-  const [date, setDate] = useState();
-
-  const onDateChange = (event) => {
-    setDate(event.target.value);
+const DateOption = (props) => {
+  const {label, type} = props;
+  const onDateChange = (date) => {
+    props.changeDate(type, date);
   }
 
   return (
-    <div className='date-option'>
-      <label className='date-option__label'>{label}</label>
-      <TextField type='datetime-local' value={date} onChange={onDateChange}/>
-    </div>
+    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+      <div className='date-option'>
+        <label className='date-option__label'>{label}</label>
+        <DateTimePicker value={props.dateFields[type]} onChange={onDateChange}/>
+      </div>
+    </MuiPickersUtilsProvider>
   )
 }
+const mapStateToProps = (state) => {
+  return {
+    dateFields: state.datePeriod
+  }
+}
 
-export default DateOption;
+const mapDispatchToProps = {
+  changeDate
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DateOption);

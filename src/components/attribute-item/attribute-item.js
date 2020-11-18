@@ -31,7 +31,7 @@ const AttributeItem = (props) => {
                  ref={provided.innerRef}>
               <DragIndicatorIcon />
               <div className='attribute-item__text'>{content}</div>
-              <IconButton onClick={onClickHandler}>
+              <IconButton onClick={onClickHandler} className='attribute-item__button'>
                 {buttonIcon}
               </IconButton>
             </div>
