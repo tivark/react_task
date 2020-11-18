@@ -11,7 +11,7 @@ const AttributeList = ({column, items}) => {
     : 'REMOVE_ALL';
 
   return (
-    <div className='attribute-list'>
+      <div className='attribute-list'>
       <span className='attribute-list__header'>
         <span className='attribute-list__title'>{column.title}</span>
         <AttributeListButton
@@ -20,29 +20,29 @@ const AttributeList = ({column, items}) => {
           columnId={column.id}
         />
       </span>
-      <Droppable droppableId={column.id}>
-        {
-          (provided) => {
-            return (
-              <div className='attribute-list__items'
-                   ref={provided.innerRef}
-                   {...provided.droppableProps}>
-                {items.map((item, index) => {
-                  return <AttributeItem
-                    key={item.id}
-                    id={item.id}
-                    content={item.name}
-                    index={index}
-                    columnId={column.id}
-                  />
-                })}
-                {provided.placeholder}
-              </div>
-            )
+        <Droppable droppableId={column.id}>
+          {
+            (provided) => {
+              return (
+                <div className='attribute-list__items'
+                     ref={provided.innerRef}
+                     {...provided.droppableProps}>
+                  {items.map((item, index) => {
+                    return <AttributeItem
+                      key={item.id}
+                      id={item.id}
+                      content={item.name}
+                      index={index}
+                      columnId={column.id}
+                    />
+                  })}
+                  {provided.placeholder}
+                </div>
+              )
+            }
           }
-        }
-      </Droppable>
-    </div>
+        </Droppable>
+      </div>
   )
 }
 

@@ -9,6 +9,10 @@ import BeerService from "../../services/beer-service";
 const RequestButton = (props) => {
 
   const getItemsList = () => {
+
+    if(props.baseUpdated){
+      return;
+    }
     const beerService = new BeerService();
     beerService.getData()
       .then((data) => {
@@ -26,9 +30,10 @@ const RequestButton = (props) => {
   )
 }
 
-const mapStateToProps = ({items}) => {
+const mapStateToProps = ({items, baseUpdated}) => {
   return {
-    items
+    items,
+    baseUpdated
   }
 }
 
