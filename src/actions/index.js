@@ -34,11 +34,19 @@ const changeDate = (dateType, date) => {
   }
 }
 
+const changeFilterInput = (value) => {
+  return {
+    type: 'CHANGE_FILTER_INPUT',
+    value
+  }
+}
+
 
 export {
   baseLoaded,
   attributeDragEnd,
   attributeRelocate,
   relocateAllAttributes,
-  changeDate
+  changeDate,
+  changeFilterInput
 }

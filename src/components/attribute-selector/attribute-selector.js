@@ -3,10 +3,12 @@ import {connect} from 'react-redux';
 import {DragDropContext} from 'react-beautiful-dnd';
 import AttributeList from '../attribute-list';
 import {baseLoaded, attributeDragEnd} from '../../actions';
-import './attribute-selector.css';
+import AttributeFilterByName from '../attribute-filter-by-name';
 import Paper from '@material-ui/core/Paper';
 import {commonStyles} from '../../styles/styles';
 import {makeStyles} from '@material-ui/styles';
+
+import './attribute-selector.css';
 
 const useStyles = makeStyles({
   paper: {
@@ -15,6 +17,12 @@ const useStyles = makeStyles({
     height: '100%',
     display: 'flex',
     flexDirection: 'column'
+  },
+  header: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '49%'
   },
   title: {
     fontWeight: '700',
@@ -38,7 +46,10 @@ const AttributeSelector = (props) => {
 
   return (
     <Paper className={classes.paper}>
-      <span className={classes.title}>Атрибуты выгрузки</span>
+      <div className={classes.header}>
+        <span className={classes.title}>Атрибуты выгрузки</span>
+        <AttributeFilterByName/>
+      </div>
       <div className={classes.listWrapper}>
         <DragDropContext onDragEnd={onDragEnd}>
           {

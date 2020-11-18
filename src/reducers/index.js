@@ -4,6 +4,7 @@ import baseLoadedReducer from "./base-loaded-reducer";
 import relocateAttributeReducer from "./relocate-attribute-reducer";
 import relocateAllAttributesReducer from "./relocate-all-attributes-reducer";
 import changeDateReducer from "./change-date-reducer";
+import changeFilterInputReducer from './change-filter-input-reducer';
 
 
 const reducer = (state = initObject, action) => {
@@ -18,6 +19,8 @@ const reducer = (state = initObject, action) => {
       return relocateAllAttributesReducer(state, action);
     case 'CHANGE_DATE':
       return changeDateReducer(state, action);
+    case 'CHANGE_FILTER_INPUT':
+      return changeFilterInputReducer(state, action);
     default:
       return state;
   }

@@ -35,7 +35,8 @@ const initObject = {
     }
   ],
   baseUpdated: false,
-  currentPath:'/'
+  currentPath:'/',
+  filterByName: ''
 }
 
 export { initObject };
