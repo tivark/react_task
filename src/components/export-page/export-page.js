@@ -8,12 +8,12 @@ import './export-page.css';
 const ExportPage = () => {
   return (
     <div className="export-page-container">
-      <h1>Экспорт данных</h1>
+      <h2 className='export-page__title'>Экспорт данных</h2>
       <div className='panels-wrapper'>
         <OptionsPanel/>
         <DataPanel/>
-        <RequestButton />
       </div>
+      <RequestButton />
     </div>
   )
 }

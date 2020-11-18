@@ -1,5 +1,9 @@
 .data-panel{
+    box-sizing: border-box;
     width: 70%;
-    background-color: #ffffff;
-    min-height: 500px;
+    background-color: #FFFFFF;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
 }

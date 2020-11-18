@@ -1,7 +1,15 @@
 .attribute-list {
     width: 100%;
+    background-color: #ffffff;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
 }
-
+.attribute-list__items{
+    flex: 1 1 auto;
+    height: 0;
+    overflow-y: auto;
+}
 .attribute-list:first-child{
     margin-right: 20px;
 }
@@ -9,4 +17,10 @@
 .attribute-list__header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.attribute-list__button{
+
 }

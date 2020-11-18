@@ -1,7 +1,7 @@
 .request-button{
+    box-sizing: border-box;
     width: 100%;
     padding: 20px;
-    margin: 20px;
     text-align: center;
     border: solid #000000 1px;
     border-radius: 3px;

@@ -21,20 +21,21 @@ const initObject = {
     {
       title: 'Home',
       path: '/',
-      icon: 'HomeIcon'
+      icon: 'home'
     },
     {
       title: 'Export',
       path: '/export/',
-      icon: 'DvrIcon'
+      icon: 'export'
     },
     {
       title: 'Blank page',
       path: '/blank/',
-      icon: 'BookmarkIcon'
+      icon: 'bookmark'
     }
   ],
-  baseUpdated: false
+  baseUpdated: false,
+  currentPath:'/'
 }
 
 export { initObject };
