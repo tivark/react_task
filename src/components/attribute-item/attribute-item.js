@@ -1,25 +1,49 @@
 import React from "react";
 import {Draggable} from "react-beautiful-dnd";
-import './attribute-item.css';
-import {Button} from "@material-ui/core";
+import {connect} from 'react-redux';
+import {attributeRelocate} from "../../actions";
 
-const AttributeItem = ({id, content, index}) => {
-  // const dragId = id + content[0];
+import './attribute-item.css';
+import {IconButton} from "@material-ui/core";
+import AddIcon from '@material-ui/icons/Add';
+import DeleteIcon from '@material-ui/icons/Delete';
+import DragIndicatorIcon from '@material-ui/icons/DragIndicator';
+
+
+const AttributeItem = (props) => {
+  const {id, content, index, columnId} = props;
+  const buttonIcon = columnId === 'available'
+    ? <AddIcon/>
+    : <DeleteIcon/>;
+
+  const onClickHandler = () => {
+    props.attributeRelocated(id);
+  }
+
   return (
     <Draggable draggableId={id} index={index}>
       {
         (provided) => {
           return (
             <div className='attribute-item'
-              {...provided.draggableProps}
-              {...provided.dragHandleProps}
-              ref={provided.innerRef}>
-              {content}
+                 {...provided.draggableProps}
+                 {...provided.dragHandleProps}
+                 ref={provided.innerRef}>
+              <DragIndicatorIcon />
+              <div className='attribute-item__text'>{content}</div>
+              <IconButton onClick={onClickHandler}>
+                {buttonIcon}
+              </IconButton>
             </div>
-          )}
+          )
+        }
       }
     </Draggable>
   )
 }
 
-export default AttributeItem;
+const mapDispatchToProps = {
+  attributeRelocate
+}
+
+export default connect(null, mapDispatchToProps)(AttributeItem);

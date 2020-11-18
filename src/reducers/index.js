@@ -1,4 +1,5 @@
 import {initObject} from "../services/init-object";
+import attributeDragEndReducer from "./attribute-drag-end-reducer";
 
 const reducer = (state = initObject, action) => {
   switch (action.type) {
@@ -18,23 +19,8 @@ const reducer = (state = initObject, action) => {
         },
         items: itemsObj
       }
-    case 'COLUMN_CHANGED':
-      return {
-        ...state,
-        columns: {
-          ...state.columns,
-          [action.column.id]: action.column
-        }
-      }
-    case 'ATTRIBUTE_RELOCATED':
-      return {
-        ...state,
-        columns: {
-          ...state.columns,
-          [action.startColumn.id]: action.startColumn,
-          [action.finishColumn.id]: action.finishColumn
-        }
-      }
+    case 'ATTRIBUTE_DRAG_END':
+      return attributeDragEndReducer(state, action);
     default:
       return state;
   }

@@ -5,23 +5,23 @@ const baseLoaded = (base) => {
   }
 }
 
-const columnChanged = (column) => {
+const attributeDragEnd = (result) => {
   return {
-    type: 'COLUMN_CHANGED',
-    column
+    type: 'ATTRIBUTE_DRAG_END',
+    result
   }
 }
 
-const attributeRelocated = (startColumn, finishColumn) => {
+const attributeRelocate = (attributeId) => {
   return {
-    type: 'ATTRIBUTE_RELOCATED',
-    startColumn,
-    finishColumn
+    type: 'RELOCATE_ATTRIBUTE',
+    attributeId
   }
 }
+
 
 export {
   baseLoaded,
-  columnChanged,
-  attributeRelocated
+  attributeDragEnd,
+  attributeRelocate
 }

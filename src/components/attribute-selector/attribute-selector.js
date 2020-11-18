@@ -1,10 +1,10 @@
-import React, {useState} from "react";
+import React from "react";
 import {connect} from 'react-redux';
 
 import {DragDropContext} from "react-beautiful-dnd";
 import AttributeList from "../attribute-list";
 
-import {baseLoaded, columnChanged, attributeRelocated} from "../../actions";
+import {baseLoaded, attributeDragEnd } from "../../actions";
 import './attribute-selector.css';
 
 
@@ -12,50 +12,8 @@ const AttributeSelector = (props) => {
 
   const {items, columns, columnOrder} = props;
 
-  const onDragEnd = ({destination, source, draggableId}) => {
-
-    if (!destination) {
-      return;
-    }
-    if (
-      destination.droppableId === source.droppableId
-      && destination.index === source.index
-    ) {
-      return;
-    }
-
-    const start = columns[source.droppableId];
-    const finish = columns[destination.droppableId]
-
-    if (start === finish) {
-      const newItemsId = [...start.itemsId];
-      newItemsId.splice(source.index, 1);
-      newItemsId.splice(destination.index, 0, draggableId);
-
-      const newColumn = {
-        ...start,
-        itemsId: newItemsId
-      }
-
-      props.columnChanged(newColumn);
-      return;
-    }
-
-    const startItemsId = [...start.itemsId];
-    startItemsId.splice(source.index, 1);
-    const startColumn = {
-      ...start,
-      itemsId: startItemsId
-    }
-
-    const finishItemsId = [...finish.itemsId];
-    finishItemsId.splice(destination.index, 0, draggableId);
-    const finishColumn = {
-      ...finish,
-      itemsId: finishItemsId
-    }
-
-    props.attributeRelocated(startColumn, finishColumn);
+  const onDragEnd = (result) => {
+    props.attributeDragEnd(result);
   }
 
   return (
@@ -92,8 +50,7 @@ const mapStateToProps = ({items, columns, columnOrder}) => {
 
 const mapDispatchToProps = {
   baseLoaded,
-  columnChanged,
-  attributeRelocated
+  attributeDragEnd
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AttributeSelector);
