@@ -22,7 +22,8 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    width: '49%'
+    width: '49%',
+    flexWrap: 'wrap'
   },
   title: {
     fontWeight: '700',

@@ -13,6 +13,7 @@ const baseLoadedReducer = (state, action) => {
       'available': column
     },
     items: itemsObj,
+    requestSend: false,
     baseUpdated: true
   }
 }

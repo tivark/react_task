@@ -9,6 +9,11 @@ import changeFilterInputReducer from './change-filter-input-reducer';
 
 const reducer = (state = initObject, action) => {
   switch (action.type) {
+    case 'SEND_BASE_REQUEST':
+      return {
+        ...state,
+        requestSend: true
+      }
     case 'BASE_LOADED':
       return baseLoadedReducer(state, action);
     case 'ATTRIBUTE_DRAG_END':

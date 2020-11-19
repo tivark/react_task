@@ -8,7 +8,11 @@ import './attribute-list-button.css';
 
 const useStyles = makeStyles({
   main: {
-    textTransform: 'none'
+    textTransform: 'none',
+    backgroundColor: '#E6E9ED'
+  },
+  disabledButton:{
+    backgroundColor: '#00000008 !important'
   }
 })
 
@@ -27,7 +31,9 @@ const AttributeListButton = (props) => {
       disabled={isInactive}
       onClick={onClickHandler}
       size='small'
-      className={classes.main}>
+      className={classes.main}
+      classes={{disabled: classes.disabledButton}}
+      disableElevation>
       {buttonText}
     </Button>
   );

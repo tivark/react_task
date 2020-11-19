@@ -15,14 +15,21 @@ import DragIndicatorIcon from '@material-ui/icons/DragIndicator';
 const useStyles = makeStyles({
   attributeItem: {
     backgroundColor: commonStyles.backgroundColor,
-    marginBottom: '7px',
+    marginBottom: '3px',
     marginRight: '5px',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     '&:hover .item-button': {
-      transition: 'opacity .2s',
+      transition: 'opacity .5s',
       opacity: '1'
+    }
+  },
+  iconButtonRoot:{
+    padding: '6px',
+    margin: '3px',
+    '&:hover':{
+      backgroundColor: 'transparent'
     }
   }
 })
@@ -47,12 +54,13 @@ const AttributeItem = (props) => {
                    {...provided.draggableProps}
                    {...provided.dragHandleProps}
                    ref={provided.innerRef}>
-              <DragIndicatorIcon/>
+              <DragIndicatorIcon color='action'/>
               <div className='attribute-item__text'>{content}</div>
               <IconButton
                 onClick={onClickHandler}
                 className='item-button'
-                disableFocusRipple>
+                size='small'
+                classes={{root:classes.iconButtonRoot}}>
                 {buttonIcon}
               </IconButton>
             </Paper>

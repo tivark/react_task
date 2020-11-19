@@ -1,19 +1,48 @@
-import React from "react";
+import React from 'react';
 import {connect} from 'react-redux';
 
-import {baseLoaded} from "../../actions";
+import {sendBaseRequest, baseLoaded} from '../../actions';
 
 import './request-button.css';
-import BeerService from "../../services/beer-service";
+import BeerService from '../../services/beer-service';
+import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import {makeStyles} from '@material-ui/styles';
+import {commonStyles} from '../../styles/styles';
+
+const useStyles = makeStyles({
+  button: {
+    backgroundColor: commonStyles.requestButtonColor,
+    color: '#FFFFFF',
+    '&:hover':{
+      backgroundColor: commonStyles.requestButtonHover
+    }
+  }
+})
 
 const RequestButton = (props) => {
+  const beerService = new BeerService();
+  const classes = useStyles();
+
+  const spinner = (<span className='spinner'>
+    <CircularProgress size='24px'/> <span className='spinner-text'>Получение данных с сервера</span>
+  </span>)
+
+  const requestButton = (<Button
+    variant='contained'
+    disableElevation
+    fullWidth='true'
+    disabled={props.baseUpdated}
+    className={classes.button}>
+    Настроить атрибуты
+  </Button>)
 
   const getItemsList = () => {
-
-    if(props.baseUpdated){
+    if (props.baseUpdated) {
       return;
     }
-    const beerService = new BeerService();
+
+    props.sendBaseRequest();
     beerService.getData()
       .then((data) => {
         props.baseLoaded(data);
@@ -24,21 +53,25 @@ const RequestButton = (props) => {
   }
 
   return (
-    <div className='request-button' onClick={getItemsList}>
-      Big button
+    <div className='request-button-wrapper' onClick={getItemsList}>
+      {props.requestSend
+        ? spinner
+        : requestButton}
     </div>
   )
 }
 
-const mapStateToProps = ({items, baseUpdated}) => {
+const mapStateToProps = ({items, baseUpdated, requestSend}) => {
   return {
     items,
-    baseUpdated
+    baseUpdated,
+    requestSend
   }
 }
 
 const mapDispatchToProps = {
-  baseLoaded
+  baseLoaded,
+  sendBaseRequest
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RequestButton);

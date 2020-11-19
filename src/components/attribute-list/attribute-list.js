@@ -10,6 +10,22 @@ const AttributeList = ({column, items}) => {
     ? 'ADD_ALL'
     : 'REMOVE_ALL';
 
+  let renderItems;
+
+  if (items.length === 0) {
+    renderItems = <div className='non-attr-message'>Атрибуты отсутствуют</div>;
+  } else {
+    renderItems = items.map((item, index) => {
+      return <AttributeItem
+        key={item.id}
+        id={item.id}
+        content={item.name}
+        index={index}
+        columnId={column.id}
+      />
+    })
+  }
+
   return (
     <div className='attribute-list'>
       <span className='attribute-list__header'>
@@ -21,28 +37,24 @@ const AttributeList = ({column, items}) => {
           className='attribute-list__button'
         />
       </span>
-      <Droppable droppableId={column.id}>
-        {
-          (provided) => {
-            return (
-              <div className='attribute-list__items'
-                   ref={provided.innerRef}
-                   {...provided.droppableProps}>
-                {items.map((item, index) => {
-                  return <AttributeItem
-                    key={item.id}
-                    id={item.id}
-                    content={item.name}
-                    index={index}
-                    columnId={column.id}
-                  />
-                })}
-                {provided.placeholder}
-              </div>
-            )
-          }
-        }
-      </Droppable>
+      <div className='scrolling-wrapper'>
+        <div className='droppable-wrapper'>
+          <Droppable droppableId={column.id}>
+            {
+              (provided) => {
+                return (
+                  <div className='attribute-list__items'
+                       ref={provided.innerRef}
+                       {...provided.droppableProps}>
+                    {renderItems}
+                    {provided.placeholder}
+                  </div>
+                )
+              }
+            }
+          </Droppable>
+        </div>
+      </div>
     </div>
   )
 }

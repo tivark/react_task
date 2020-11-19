@@ -13,11 +13,11 @@ const initObject = {
     },
   },
   columnOrder: ['available', 'selected'],
-  datePeriod:{
+  datePeriod: {
     startDate: Date.now(),
     endDate: Date.now()
   },
-  sidePanel:[
+  sidePanel: [
     {
       title: 'Home',
       path: '/',
@@ -34,9 +34,41 @@ const initObject = {
       icon: 'bookmark'
     }
   ],
+  requestSend: false,
   baseUpdated: false,
-  currentPath:'/',
-  filterByName: ''
+  currentPath: '/',
+  filterByName: '',
+  options: {
+    'group-1': {
+      id: 'group-1',
+      title: 'Учёт по дате',
+      options: [
+        {
+          id: 'option-1',
+          title: '',
+          type: 'single',
+          variants: [
+            {create:'Создания'},
+            {public: 'Публикации'}]
+        }
+      ]
+    },
+    'group-2': {
+      id: 'group-2',
+      title: 'Статус',
+      options: [
+        {
+          id: 'option-2',
+          title: 'Все',
+          type: 'multi',
+          variants: [
+            {new:'Новый'},
+            {inWork: 'В работе'},
+            {status: 'Статус 3'}]
+        }
+      ]
+    }
+  }
 }
 
-export { initObject };
+export {initObject};

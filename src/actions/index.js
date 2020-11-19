@@ -5,6 +5,12 @@ const baseLoaded = (base) => {
   }
 }
 
+const sendBaseRequest = () => {
+  return {
+    type: 'SEND_BASE_REQUEST'
+  }
+}
+
 const attributeDragEnd = (result) => {
   return {
     type: 'ATTRIBUTE_DRAG_END',
@@ -48,5 +54,6 @@ export {
   attributeRelocate,
   relocateAllAttributes,
   changeDate,
-  changeFilterInput
+  changeFilterInput,
+  sendBaseRequest
 }
