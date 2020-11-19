@@ -1,14 +1,19 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
 import {makeStyles} from '@material-ui/styles';
 import {changeFilterInput} from '../../actions';
+import Input from '@material-ui/core/Input';
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 const useStyles = makeStyles({
   container: {
     marginBottom: '10px'
+  },
+  input: {
+    borderBottom: 'solid 1px #eeeeee',
+    backgroundColor: '#ffffff',
+    paddingRight: '5px'
   }
 })
 
@@ -21,17 +26,17 @@ const AttributeFilterByName = (props) => {
   const classes = useStyles();
   return (
     <div className={classes.container}>
-      <Grid container spacing={1} alignItems="flex-end">
-        <Grid item>
-          <SearchIcon color='action'/>
-        </Grid>
-        <Grid item>
-          <TextField
-            value={props.filter}
-            onChange={onChangeInput}
-          />
-        </Grid>
-      </Grid>
+      <Input
+        type='search'
+        className={classes.input}
+        startAdornment={
+          <InputAdornment position="start">
+            <SearchIcon color='action'/>
+          </InputAdornment>
+        }
+        disableUnderline
+        onChange={onChangeInput}
+      />
     </div>
   )
 }

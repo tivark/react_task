@@ -14,8 +14,8 @@ const initObject = {
   },
   columnOrder: ['available', 'selected'],
   datePeriod: {
-    startDate: Date.now(),
-    endDate: Date.now()
+    startDate:(new Date(Date.now())).toJSON().substring(0, 16),
+    endDate: (new Date(Date.now())).toJSON().substring(0, 16)
   },
   sidePanel: [
     {
