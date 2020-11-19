@@ -34,7 +34,7 @@ const relocateAllAttributes = (fromColumnId) => {
 
 const changeDate = (dateType, date) => {
   return {
-    type:'CHANGE_DATE',
+    type: 'CHANGE_DATE',
     dateType,
     date
   }
@@ -47,6 +47,22 @@ const changeFilterInput = (value) => {
   }
 }
 
+const checkboxOptionToggle = (optionId, variantId) => {
+  return {
+    type: 'CHECKBOX_OPTION_TOGGLE',
+    optionId,
+    variantId
+  }
+}
+
+const radioOptionToggle = (optionId, variantId) => {
+  return {
+    type: 'RADIO_OPTION_TOGGLE',
+    optionId,
+    variantId
+  }
+}
+
 
 export {
   baseLoaded,
@@ -55,5 +71,7 @@ export {
   relocateAllAttributes,
   changeDate,
   changeFilterInput,
-  sendBaseRequest
+  sendBaseRequest,
+  checkboxOptionToggle,
+  radioOptionToggle
 }

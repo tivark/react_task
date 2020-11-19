@@ -5,6 +5,8 @@ import relocateAttributeReducer from "./relocate-attribute-reducer";
 import relocateAllAttributesReducer from "./relocate-all-attributes-reducer";
 import changeDateReducer from "./change-date-reducer";
 import changeFilterInputReducer from './change-filter-input-reducer';
+import checkboxOptionToggleReducer from './checkbox-option-toggle-reducer';
+import radioOptionToggleReducer from './radio-option-toggle-reducer';
 
 
 const reducer = (state = initObject, action) => {
@@ -26,6 +28,10 @@ const reducer = (state = initObject, action) => {
       return changeDateReducer(state, action);
     case 'CHANGE_FILTER_INPUT':
       return changeFilterInputReducer(state, action);
+    case 'CHECKBOX_OPTION_TOGGLE':
+      return checkboxOptionToggleReducer(state, action);
+    case 'RADIO_OPTION_TOGGLE':
+      return radioOptionToggleReducer(state, action);
     default:
       return state;
   }

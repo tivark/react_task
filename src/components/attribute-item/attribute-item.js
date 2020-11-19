@@ -15,7 +15,7 @@ import DragIndicatorIcon from '@material-ui/icons/DragIndicator';
 const useStyles = makeStyles({
   attributeItem: {
     backgroundColor: commonStyles.backgroundColor,
-    marginBottom: '3px',
+    marginBottom: '5px',
     marginRight: '5px',
     display: 'flex',
     justifyContent: 'space-between',

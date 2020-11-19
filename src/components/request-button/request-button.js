@@ -31,7 +31,7 @@ const RequestButton = (props) => {
   const requestButton = (<Button
     variant='contained'
     disableElevation
-    fullWidth='true'
+    fullWidth
     disabled={props.baseUpdated}
     className={classes.button}>
     Настроить атрибуты

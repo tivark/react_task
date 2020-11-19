@@ -48,8 +48,9 @@ const initObject = {
           title: '',
           type: 'single',
           variants: [
-            {create:'Создания'},
-            {public: 'Публикации'}]
+            {id: 'create', label: 'Создания'},
+            {id: 'public', label: 'Публикации'}
+          ]
         }
       ]
     },
@@ -62,12 +63,17 @@ const initObject = {
           title: 'Все',
           type: 'multi',
           variants: [
-            {new:'Новый'},
-            {inWork: 'В работе'},
-            {status: 'Статус 3'}]
+            {id: 'new', label: 'Новый'},
+            {id: 'inWork', label: 'В работе'},
+            {id: 'status', label: 'Статус 3'}
+          ]
         }
       ]
     }
+  },
+  selectedOptions: {
+    'option-1':'create',
+    'option-2':['new']
   }
 }
 
