@@ -2,28 +2,26 @@ const checkboxOptionToggleReducer = (state, action) => {
   const {optionId, variantId} = action;
   const selOptions = {...state.selectedOptions};
 
-  if (optionId in selOptions) {
-    const newOptionList = [...selOptions[optionId]]
-    const index = newOptionList.indexOf(variantId);
-    index < 0
-      ? newOptionList.push(variantId)
-      : newOptionList.splice(index, 1);
 
-    return {
-      ...state,
-      baseUpdated: !newOptionList.length,
-      selectedOptions: {
-        ...state.selectedOptions,
-        [optionId]: newOptionList
-      }
-    }
-  }
+  const newOptionList = [...selOptions[optionId]]
+  const index = newOptionList.indexOf(variantId);
+  index < 0
+    ? newOptionList.push(variantId)
+    : newOptionList.splice(index, 1);
+
+  //Т.к. рабочий только option-2 чекбокс проверка на изменение опций для обновления только для него
+  const updated = (newOptionList.length === 0)
+    || newOptionList.length === state.lastUpdate.length
+    && newOptionList.every((el) => {
+      return state.lastUpdate.includes(el);
+    });
 
   return {
     ...state,
-    baseUpdated: false,
+    baseUpdated: optionId !== 'option-2' ? state.baseUpdated : updated,
     selectedOptions: {
-      [optionId]: [variantId]
+      ...state.selectedOptions,
+      [optionId]: newOptionList
     }
   }
 }

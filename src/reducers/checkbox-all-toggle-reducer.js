@@ -14,9 +14,16 @@ const checkboxAllToggleReducer = (state, action) => {
     ? allVariantsId
     : []
 
+  //Т.к. рабочий только option-2 чекбокс проверка на изменение опций для обновления только для него
+  const updated = (newSelectedVariants.length === 0)
+  || newSelectedVariants.length === state.lastUpdate.length
+    && newSelectedVariants.every((el) => {
+      return state.lastUpdate.includes(el);
+    });
+
   return {
     ...state,
-    baseUpdated: !newSelectedVariants.length,
+    baseUpdated: optionId !== 'option-2' ? state.baseUpdated : updated,
     selectedOptions: {
       ...state.selectedOptions,
       [optionId]: newSelectedVariants

@@ -1,3 +1,6 @@
+.export-page__title{
+    margin-bottom: 10px;
+}
 .export-page-container{
     box-sizing: border-box;
     display: flex;

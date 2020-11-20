@@ -8,8 +8,6 @@ import Paper from '@material-ui/core/Paper';
 import {commonStyles} from '../../styles/styles';
 import {makeStyles} from '@material-ui/styles';
 
-import './attribute-selector.css';
-
 const useStyles = makeStyles({
   paper: {
     backgroundColor: commonStyles.backgroundColor,

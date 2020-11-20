@@ -36,6 +36,7 @@ const initObject = {
   ],
   requestSend: false,
   baseUpdated: false,
+  lastUpdate:[],
   currentPath: '/',
   filterByName: '',
   requestOptions: {
@@ -70,11 +71,39 @@ const initObject = {
           ]
         }
       ]
+    },
+    'group-3': {
+      id: 'group-3',
+      title: 'Blank',
+      optionsID: ['option-3'],
+      options: [
+        {
+          id: 'option-3',
+          title: 'Blank',
+          type: 'multi',
+          variants: [
+            {id: 'b1', label: 'Blank option 1'},
+            {id: 'b2', label: 'Blank option 2'},
+            {id: 'b3', label: 'Blank option 3'},
+            {id: 'b4', label: 'Blank option 4'},
+            {id: 'b5', label: 'Blank option 5'},
+            {id: 'b6', label: 'Blank option 6'},
+            {id: 'b7', label: 'Blank option 7'},
+            {id: 'b8', label: 'Blank option 8'},
+            {id: 'b9', label: 'Blank option 9'},
+            {id: 'b10', label: 'Blank option 10'},
+            {id: 'b11', label: 'Blank option 11'},
+            {id: 'b12', label: 'Blank option 12'},
+            {id: 'b13', label: 'Blank option 13'}
+          ]
+        }
+      ]
     }
   },
   selectedOptions: {
     'option-1':'create',
-    'option-2':['w_abv', 'wo_abv']
+    'option-2':['w_abv', 'wo_abv'],
+    'option-3':[]
   }
 }
 

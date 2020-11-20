@@ -14,7 +14,9 @@ const OptionsPanel = (props) => {
 
   return (
     <div className='options-panel'>
-      {renderOptions}
+      <div className='options-wrapper'>
+        {renderOptions}
+      </div>
     </div>
   )
 }
