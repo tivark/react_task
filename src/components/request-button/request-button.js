@@ -1,13 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
-
 import {sendBaseRequest, baseLoaded} from '../../actions';
-
-import './request-button.css';
 import BeerService from '../../services/beer-service';
+import getParamFromOptions from '../../utils/getParamsFromOptions';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import {makeStyles} from '@material-ui/styles';
+import './request-button.css';
 import {commonStyles} from '../../styles/styles';
 
 const useStyles = makeStyles({
@@ -42,8 +41,13 @@ const RequestButton = (props) => {
       return;
     }
 
+    let params = getParamFromOptions(props.requestOptions, props.selectedOptions);
+    if(params){
+      params = '&' + params;
+    }
+
     props.sendBaseRequest();
-    beerService.getData()
+    beerService.getData(params)
       .then((data) => {
         props.baseLoaded(data);
       })
@@ -61,11 +65,14 @@ const RequestButton = (props) => {
   )
 }
 
-const mapStateToProps = ({items, baseUpdated, requestSend}) => {
+const mapStateToProps = (state) => {
   return {
-    items,
-    baseUpdated,
-    requestSend
+    items: state.items,
+    baseUpdated: state.baseUpdated,
+    requestSend: state.requestSend,
+    columns: state.columns,
+    requestOptions: state.requestOptions,
+    selectedOptions: state.selectedOptions
   }
 }
 

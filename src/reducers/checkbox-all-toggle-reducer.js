@@ -1,6 +1,6 @@
 const checkboxAllToggleReducer = (state, action) => {
   const {optionId, groupId} = action;
-  const groupOptions = state.options[groupId].options;
+  const groupOptions = state.requestOptions[groupId].options;
   const option = groupOptions.filter((option) => {
     return option.id === optionId;
   })[0]
@@ -16,6 +16,7 @@ const checkboxAllToggleReducer = (state, action) => {
 
   return {
     ...state,
+    baseUpdated: !newSelectedVariants.length,
     selectedOptions: {
       ...state.selectedOptions,
       [optionId]: newSelectedVariants

@@ -11,7 +11,6 @@ const AttributeList = ({column, items}) => {
     : 'REMOVE_ALL';
 
   let renderItems;
-
   if (items.length === 0) {
     renderItems = <div className='non-attr-message'>Атрибуты отсутствуют</div>;
   } else {

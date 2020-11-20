@@ -5,10 +5,10 @@ import OptionSelector from '../option-selector';
 import './options-panel.css';
 
 const OptionsPanel = (props) => {
-  const groupsId = Object.keys(props.options);
+  const groupsId = Object.keys(props.requestOptions);
 
   const renderOptions = groupsId.map((groupId) => {
-    const group = props.options[groupId];
+    const group = props.requestOptions[groupId];
     return <OptionSelector key={groupId} group={group}/>
   })
 
@@ -21,7 +21,7 @@ const OptionsPanel = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    options: state.options
+    requestOptions: state.requestOptions
   }
 }
 

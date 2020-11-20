@@ -38,7 +38,7 @@ const initObject = {
   baseUpdated: false,
   currentPath: '/',
   filterByName: '',
-  options: {
+  requestOptions: {
     'group-1': {
       id: 'group-1',
       title: 'Учёт по дате',
@@ -74,7 +74,7 @@ const initObject = {
   },
   selectedOptions: {
     'option-1':'create',
-    'option-2':[]
+    'option-2':['w_abv', 'wo_abv']
   }
 }
 

@@ -1,6 +1,7 @@
 const checkboxOptionToggleReducer = (state, action) => {
   const {optionId, variantId} = action;
   const selOptions = {...state.selectedOptions};
+
   if (optionId in selOptions) {
     const newOptionList = [...selOptions[optionId]]
     const index = newOptionList.indexOf(variantId);
@@ -10,14 +11,17 @@ const checkboxOptionToggleReducer = (state, action) => {
 
     return {
       ...state,
+      baseUpdated: !newOptionList.length,
       selectedOptions: {
         ...state.selectedOptions,
         [optionId]: newOptionList
       }
     }
   }
+
   return {
     ...state,
+    baseUpdated: false,
     selectedOptions: {
       [optionId]: [variantId]
     }
