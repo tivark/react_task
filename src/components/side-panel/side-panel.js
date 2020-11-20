@@ -13,10 +13,14 @@ import './side-panel.css';
 const useStyles = makeStyles({
   paper: {
     position: 'relative',
-    backgroundColor: '#4A4A4A'
+    backgroundColor: '#4A4A4A',
+    borderRight: 'none'
   },
   button: {
-    borderRadius: '0',
+    borderTopRightRadius: '0',
+    borderBottomRightRadius: '0',
+    borderTopLeftRadius: '5px',
+    borderBottomLeftRadius: '5px',
     color:'#ffffff',
     '&:disabled':{
       color:'#4A4A4A',
