@@ -1,23 +1,37 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import {checkboxOptionToggle} from '../../actions';
+import {checkboxOptionToggle, checkboxAllToggle} from '../../actions';
+import './option-checkbox.css';
 
 const OptionCheckbox = (props) => {
-  const {option, selectedOptions} = props;
+  const {option, groupId, selectedOptions} = props;
+
+  const isAllChecked = selectedOptions[option.id].length === option.variants.length;
 
   const toggleOption = (event) => {
     props.checkboxOptionToggle(option.id, event.target.name);
   }
 
+  const toggleAll = () => {
+    props.checkboxAllToggle(option.id, groupId);
+  }
+
   return (
     <FormControl component="fieldset">
-      <FormLabel component="legend">{option.title}</FormLabel>
-      <FormGroup>
+      <FormControlLabel control={
+        <Checkbox
+          name={option.id}
+          onChange={toggleAll}
+          checked={isAllChecked}
+        />
+      } label={option.title}
+      />
+
+      <FormGroup className='checkbox-sublist'>
         {
           option.variants.map((variant) => {
             const isChecked = (option.id in selectedOptions)
@@ -51,7 +65,8 @@ const mapStateToProps = ({selectedOptions}) => {
 }
 
 const mapDispatchToProps = {
-  checkboxOptionToggle
+  checkboxOptionToggle,
+  checkboxAllToggle
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(OptionCheckbox);

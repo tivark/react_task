@@ -42,6 +42,7 @@ const initObject = {
     'group-1': {
       id: 'group-1',
       title: 'Учёт по дате',
+      optionsID:['option-1'],
       options: [
         {
           id: 'option-1',
@@ -56,16 +57,16 @@ const initObject = {
     },
     'group-2': {
       id: 'group-2',
-      title: 'Статус',
+      title: 'Алкоголь',
+      optionsID: ['option-2'],
       options: [
         {
           id: 'option-2',
           title: 'Все',
           type: 'multi',
           variants: [
-            {id: 'new', label: 'Новый'},
-            {id: 'inWork', label: 'В работе'},
-            {id: 'status', label: 'Статус 3'}
+            {id: 'w_abv', label: 'Алкогольное'},
+            {id: 'wo_abv', label: 'Безалкогольное'}
           ]
         }
       ]
@@ -73,7 +74,7 @@ const initObject = {
   },
   selectedOptions: {
     'option-1':'create',
-    'option-2':['new']
+    'option-2':[]
   }
 }
 

@@ -63,6 +63,14 @@ const radioOptionToggle = (optionId, variantId) => {
   }
 }
 
+const checkboxAllToggle = (optionId, groupId) => {
+  return {
+    type: 'CHECKBOX_ALL_TOGGLE',
+    optionId,
+    groupId
+  }
+}
+
 
 export {
   baseLoaded,
@@ -73,5 +81,6 @@ export {
   changeFilterInput,
   sendBaseRequest,
   checkboxOptionToggle,
-  radioOptionToggle
+  radioOptionToggle,
+  checkboxAllToggle
 }

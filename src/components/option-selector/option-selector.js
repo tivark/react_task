@@ -21,11 +21,11 @@ const OptionSelector = ({group}) => {
     switch (option.type){
       case 'single':
         return (
-          <OptionRadio option={option} key={option.id}/>
+          <OptionRadio option={option} parent={group.id} key={option.id}/>
         )
       case 'multi':
         return (
-          <OptionCheckbox option={option} key={option.id}/>
+          <OptionCheckbox option={option} groupId={group.id} key={option.id}/>
         )
     }
   })
