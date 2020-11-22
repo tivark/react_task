@@ -35,7 +35,6 @@ const baseLoadedReducer = (state, action) => {
     //Рабочий чекбокс только option-2, поэтому оставим только его
     key === 'option-2' && updatedState.push(...state.selectedOptions[key]);
   }
-  console.log(updatedState)
 
   return {
     ...state,
