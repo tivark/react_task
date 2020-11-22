@@ -27,6 +27,8 @@ const OptionSelector = ({group}) => {
         return (
           <OptionCheckbox option={option} groupId={group.id} key={option.id}/>
         )
+      default:
+        return '';
     }
   })
   return (

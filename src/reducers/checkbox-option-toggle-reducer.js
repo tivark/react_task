@@ -1,3 +1,5 @@
+import checkUpdatedOptions from "../utils/checkUpdatedOptions";
+
 const checkboxOptionToggleReducer = (state, action) => {
   const {optionId, variantId} = action;
   const selOptions = {...state.selectedOptions};
@@ -10,11 +12,7 @@ const checkboxOptionToggleReducer = (state, action) => {
     : newOptionList.splice(index, 1);
 
   //Т.к. рабочий только option-2 чекбокс проверка на изменение опций для обновления только для него
-  const updated = (newOptionList.length === 0)
-    || newOptionList.length === state.lastUpdate.length
-    && newOptionList.every((el) => {
-      return state.lastUpdate.includes(el);
-    });
+  const updated = checkUpdatedOptions(newOptionList, state.lastUpdate);
 
   return {
     ...state,
