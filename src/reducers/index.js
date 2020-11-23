@@ -1,4 +1,4 @@
-import {initObject} from "../services/init-object";
+import {initObject} from "../store/init-object";
 import attributeDragEndReducer from "./attribute-drag-end-reducer";
 import baseLoadedReducer from "./base-loaded-reducer";
 import relocateAttributeReducer from "./relocate-attribute-reducer";

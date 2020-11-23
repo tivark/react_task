@@ -24,9 +24,9 @@ const initObject = {
       icon: 'home'
     },
     {
-      title: 'Export',
-      path: '/export/',
-      icon: 'export'
+      title: 'Monitoring',
+      path: '/monitoring/',
+      icon: 'monitoring'
     },
     {
       title: 'Blank page',
@@ -37,7 +37,6 @@ const initObject = {
   requestSend: false,
   baseUpdated: false,
   lastUpdate:[],
-  currentPath: '/',
   filterByName: '',
   requestOptions: {
     'group-1': {

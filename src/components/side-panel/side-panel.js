@@ -34,7 +34,7 @@ const SidePanel = (props) => {
   const classes = useStyles();
   const icons = {
     'home': <HomeIcon/>,
-    'export': <DvrIcon/>,
+    'monitoring': <DvrIcon/>,
     'bookmark': <BookmarkIcon/>
   }
 
