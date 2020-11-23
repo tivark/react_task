@@ -1,10 +1,11 @@
 import React from 'react';
-import './monitoring-page.css';
 import ExportPage from '../export-page';
+import './monitoring-page.css';
+
 
 const MonitoringPage = () => {
   return <div className="monitoring-page">
-    <ExportPage />
+    <ExportPage/>
   </div>
 }
 

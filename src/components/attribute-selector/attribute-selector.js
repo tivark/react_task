@@ -1,14 +1,14 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {DragDropContext} from 'react-beautiful-dnd';
+import { connect } from 'react-redux';
+import { DragDropContext } from 'react-beautiful-dnd';
 import AttributeList from '../attribute-list';
-import {baseLoaded, attributeDragEnd} from '../../actions';
 import AttributeFilterByName from '../attribute-filter-by-name';
+import { baseLoaded, attributeDragEnd } from '../../actions';
 import Paper from '@material-ui/core/Paper';
-import {commonStyles} from '../../styles/styles';
-import {makeStyles} from '@material-ui/styles';
+import { makeStyles } from '@material-ui/styles';
+import { commonStyles } from '../../styles/styles';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles( {
   paper: {
     backgroundColor: commonStyles.backgroundColor,
     padding: '10px',
@@ -33,36 +33,36 @@ const useStyles = makeStyles({
     width: '100%',
     flexGrow: '1'
   }
-})
+} )
 
 const AttributeSelector = (props) => {
-  const {items, columns, columnOrder} = props;
+  const { items, columns, columnOrder } = props;
   const classes = useStyles();
 
   const onDragEnd = (result) => {
-    props.attributeDragEnd(result);
+    props.attributeDragEnd( result );
   }
 
   return (
-    <Paper className={classes.paper}>
-      <div className={classes.header}>
-        <span className={classes.title}>Атрибуты выгрузки</span>
+    <Paper className={ classes.paper }>
+      <div className={ classes.header }>
+        <span className={ classes.title }>Атрибуты выгрузки</span>
         <AttributeFilterByName/>
       </div>
-      <div className={classes.listWrapper}>
-        <DragDropContext onDragEnd={onDragEnd}>
+      <div className={ classes.listWrapper }>
+        <DragDropContext onDragEnd={ onDragEnd }>
           {
-            columnOrder.map((columnId) => {
+            columnOrder.map( (columnId) => {
               const column = columns[columnId];
-              const renderItems = column.itemsId.map((itemId) => {
+              const renderItems = column.itemsId.map( (itemId) => {
                 return items[itemId];
-              });
+              } );
               return <AttributeList
-                key={columnId}
-                column={column}
-                items={renderItems}
+                key={ columnId }
+                column={ column }
+                items={ renderItems }
               />
-            })
+            } )
           }
         </DragDropContext>
       </div>
@@ -70,7 +70,7 @@ const AttributeSelector = (props) => {
   )
 }
 
-const mapStateToProps = ({items, columns, columnOrder}) => {
+const mapStateToProps = ({ items, columns, columnOrder }) => {
   return {
     items,
     columns,
@@ -83,4 +83,4 @@ const mapDispatchToProps = {
   attributeDragEnd
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AttributeSelector);
+export default connect( mapStateToProps, mapDispatchToProps )( AttributeSelector );

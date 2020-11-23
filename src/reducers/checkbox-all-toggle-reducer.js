@@ -17,7 +17,7 @@ const checkboxAllToggleReducer = (state, action) => {
     : []
 
   //Т.к. рабочий только option-2 чекбокс проверка на изменение опций для обновления только для него
-  const updated = checkUpdatedOptions(newSelectedVariants, state.lastUpdate);
+  const updated = checkUpdatedOptions( newSelectedVariants, state.lastUpdate );
 
   return {
     ...state,

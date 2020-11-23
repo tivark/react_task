@@ -1,16 +1,15 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {Link, withRouter} from 'react-router-dom';
-import {IconButton} from '@material-ui/core';
+import { connect } from 'react-redux';
+import { Link, withRouter } from 'react-router-dom';
+import { IconButton } from '@material-ui/core';
 import Drawer from '@material-ui/core/Drawer';
 import HomeIcon from '@material-ui/icons/Home';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import DvrIcon from '@material-ui/icons/Dvr';
-import {makeStyles} from '@material-ui/styles';
-
+import { makeStyles } from '@material-ui/styles';
 import './side-panel.css';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles( {
   paper: {
     position: 'relative',
     backgroundColor: '#4A4A4A',
@@ -21,16 +20,16 @@ const useStyles = makeStyles({
     borderBottomRightRadius: '0',
     borderTopLeftRadius: '5px',
     borderBottomLeftRadius: '5px',
-    color:'#ffffff',
-    '&:disabled':{
-      color:'#4A4A4A',
+    color: '#ffffff',
+    '&:disabled': {
+      color: '#4A4A4A',
       backgroundColor: '#ffffff'
     }
   }
-})
+} )
 
 const SidePanel = (props) => {
-  const {sidePanel, location} = props;
+  const { sidePanel, location } = props;
   const classes = useStyles();
   const icons = {
     'home': <HomeIcon/>,
@@ -39,21 +38,21 @@ const SidePanel = (props) => {
   }
 
   return (
-    <Drawer variant='permanent' classes={{paper: classes.paper}}>
+    <Drawer variant='permanent' classes={ { paper: classes.paper } }>
       {
-        sidePanel.map((menuItem) => {
+        sidePanel.map( (menuItem) => {
           const isActive = menuItem.path === location.pathname;
           return (
-            <Link to={menuItem.path} key={menuItem.title}>
+            <Link to={ menuItem.path } key={ menuItem.title }>
               <IconButton
-                title={menuItem.title}
-                disabled={isActive}
-                className={classes.button}>
-                {icons[menuItem.icon]}
+                title={ menuItem.title }
+                disabled={ isActive }
+                className={ classes.button }>
+                { icons[menuItem.icon] }
               </IconButton>
             </Link>
           )
-        })
+        } )
       }
     </Drawer>
   )
@@ -63,4 +62,4 @@ const mapStateToProps = (state) => {
     sidePanel: state.sidePanel
   }
 }
-export default withRouter(connect(mapStateToProps, null)(SidePanel));
+export default withRouter( connect( mapStateToProps, null )( SidePanel ) );

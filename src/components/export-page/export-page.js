@@ -1,9 +1,8 @@
-import React from "react";
-import OptionsPanel from "../options-panel";
-import DataPanel from "../data-panel";
-import RequestButton from "../request-button";
+import React from 'react';
+import OptionsPanel from '../options-panel';
+import DataPanel from '../data-panel';
+import RequestButton from '../request-button';
 import Paper from '@material-ui/core/Paper';
-
 import './export-page.css';
 
 const ExportPage = () => {
@@ -14,7 +13,7 @@ const ExportPage = () => {
         <OptionsPanel/>
         <DataPanel/>
       </div>
-      <RequestButton />
+      <RequestButton/>
     </Paper>
   )
 }

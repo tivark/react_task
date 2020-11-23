@@ -1,5 +1,5 @@
 const attributeDragEndReducer = (state, action) => {
-  const {destination, source, draggableId} = action.result;
+  const { destination, source, draggableId } = action.result;
 
   if (!destination) {
     return state;
@@ -16,8 +16,8 @@ const attributeDragEndReducer = (state, action) => {
 
   if (start === finish) {
     const newItemsId = [...start.itemsId];
-    newItemsId.splice(source.index, 1);
-    newItemsId.splice(destination.index, 0, draggableId);
+    newItemsId.splice( source.index, 1 );
+    newItemsId.splice( destination.index, 0, draggableId );
 
     const newColumn = {
       ...start,
@@ -34,14 +34,15 @@ const attributeDragEndReducer = (state, action) => {
   }
 
   const startItemsId = [...start.itemsId];
-  startItemsId.splice(source.index, 1);
+  startItemsId.splice( source.index, 1 );
+
   const startColumn = {
     ...start,
     itemsId: startItemsId
   }
 
   const finishItemsId = [...finish.itemsId];
-  finishItemsId.splice(destination.index, 0, draggableId);
+  finishItemsId.splice( destination.index, 0, draggableId );
   const finishColumn = {
     ...finish,
     itemsId: finishItemsId

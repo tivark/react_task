@@ -1,5 +1,5 @@
 const radioOptionToggleReducer = (state, action) => {
-  const {optionId, variantId} = action;
+  const { optionId, variantId } = action;
 
   return {
     ...state,

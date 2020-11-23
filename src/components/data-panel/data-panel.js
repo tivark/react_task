@@ -1,13 +1,13 @@
 import React from 'react';
+import DateChecker from '../date-checker';
+import AttributeSelector from '../attribute-selector';
 import './data-panel.css';
-import DateChecker from "../date-checker";
-import AttributeSelector from "../attribute-selector";
 
 const DataPanel = () => {
   return (
     <div className="data-panel">
-      <DateChecker />
-      <AttributeSelector />
+      <DateChecker/>
+      <AttributeSelector/>
     </div>
   )
 }

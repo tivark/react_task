@@ -1,10 +1,10 @@
 const relocateAttributeReducer = (state, action) => {
-  const {attributeId} = action;
+  const { attributeId } = action;
   let startColumn, finishColumn;
 
   for (let key in state.columns) {
     const column = state.columns[key];
-    if (column.itemsId.includes(attributeId)) {
+    if (column.itemsId.includes( attributeId )) {
       startColumn = column;
     } else {
       finishColumn = column;
@@ -12,15 +12,15 @@ const relocateAttributeReducer = (state, action) => {
   }
 
   const startItemsId = [...startColumn.itemsId];
-  const itemIndex = startItemsId.indexOf(attributeId);
-  startItemsId.splice(itemIndex, 1);
+  const itemIndex = startItemsId.indexOf( attributeId );
+  startItemsId.splice( itemIndex, 1 );
   const newStartColumn = {
     ...startColumn,
     itemsId: startItemsId
   }
 
   const finishItemsId = [...finishColumn.itemsId];
-  finishItemsId.push(attributeId);
+  finishItemsId.push( attributeId );
   const newFinishColumn = {
     ...finishColumn,
     itemsId: finishItemsId

@@ -1,11 +1,9 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import SidePanel from '../side-panel/side-panel';
-
+import MonitoringPage from '../monitoring-page';
 import '@atlaskit/css-reset';
 import './app.css';
-import MonitoringPage from '../monitoring-page';
-
 
 const App = () => {
   return (

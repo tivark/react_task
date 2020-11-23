@@ -1,10 +1,10 @@
 const relocateAllAttributesReducer = (state, action) => {
-  const {fromColumnId} = action;
+  const { fromColumnId } = action;
   let fromColumn, targetColumn;
 
-  for(let key in state.columns){
+  for (let key in state.columns) {
     const column = state.columns[key];
-    if(column.id === fromColumnId){
+    if (column.id === fromColumnId) {
       fromColumn = column;
     } else {
       targetColumn = column;
@@ -13,7 +13,7 @@ const relocateAllAttributesReducer = (state, action) => {
   const newItemsId = [...targetColumn.itemsId, ...fromColumn.itemsId];
   const newColumn = {
     ...fromColumn,
-    itemsId:[]
+    itemsId: []
   }
   const newTargetColumn = {
     ...targetColumn,

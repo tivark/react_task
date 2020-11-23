@@ -1,18 +1,18 @@
-import checkUpdatedOptions from "../utils/checkUpdatedOptions";
+import checkUpdatedOptions from '../utils/checkUpdatedOptions';
 
 const checkboxOptionToggleReducer = (state, action) => {
-  const {optionId, variantId} = action;
-  const selOptions = {...state.selectedOptions};
+  const { optionId, variantId } = action;
+  const selOptions = { ...state.selectedOptions };
 
 
   const newOptionList = [...selOptions[optionId]]
-  const index = newOptionList.indexOf(variantId);
+  const index = newOptionList.indexOf( variantId );
   index < 0
-    ? newOptionList.push(variantId)
-    : newOptionList.splice(index, 1);
+    ? newOptionList.push( variantId )
+    : newOptionList.splice( index, 1 );
 
   //Т.к. рабочий только option-2 чекбокс проверка на изменение опций для обновления только для него
-  const updated = checkUpdatedOptions(newOptionList, state.lastUpdate);
+  const updated = checkUpdatedOptions( newOptionList, state.lastUpdate );
 
   return {
     ...state,

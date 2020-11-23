@@ -1,23 +1,23 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {sendBaseRequest, baseLoaded} from '../../actions';
+import { connect } from 'react-redux';
+import { sendBaseRequest, baseLoaded } from '../../actions';
 import BeerService from '../../services/beer-service';
 import getParamFromOptions from '../../utils/getParamsFromOptions';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import {makeStyles} from '@material-ui/styles';
+import { makeStyles } from '@material-ui/styles';
 import './request-button.css';
-import {commonStyles} from '../../styles/styles';
+import { commonStyles } from '../../styles/styles';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles( {
   button: {
     backgroundColor: commonStyles.requestButtonColor,
     color: '#FFFFFF',
-    '&:hover':{
+    '&:hover': {
       backgroundColor: commonStyles.requestButtonHover
     }
   }
-})
+} )
 
 const RequestButton = (props) => {
   const beerService = new BeerService();
@@ -31,8 +31,8 @@ const RequestButton = (props) => {
     variant='contained'
     disableElevation
     fullWidth
-    disabled={props.baseUpdated}
-    className={classes.button}>
+    disabled={ props.baseUpdated }
+    className={ classes.button }>
     Настроить атрибуты
   </Button>)
 
@@ -41,26 +41,26 @@ const RequestButton = (props) => {
       return;
     }
 
-    let params = getParamFromOptions(props.requestOptions, props.selectedOptions);
-    if(params){
+    let params = getParamFromOptions( props.requestOptions, props.selectedOptions );
+    if (params) {
       params = '&' + params;
     }
 
     props.sendBaseRequest();
-    beerService.getData(params)
-      .then((data) => {
-        props.baseLoaded(data);
-      })
-      .catch((error) => {
-        console.error(error.message);
-      })
+    beerService.getData( params )
+      .then( (data) => {
+        props.baseLoaded( data );
+      } )
+      .catch( (error) => {
+        console.error( error.message );
+      } )
   }
 
   return (
-    <div className='request-button-wrapper' onClick={getItemsList}>
-      {props.requestSend
+    <div className='request-button-wrapper' onClick={ getItemsList }>
+      { props.requestSend
         ? spinner
-        : requestButton}
+        : requestButton }
     </div>
   )
 }
@@ -81,4 +81,4 @@ const mapDispatchToProps = {
   sendBaseRequest
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RequestButton);
+export default connect( mapStateToProps, mapDispatchToProps )( RequestButton );

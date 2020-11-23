@@ -1,5 +1,5 @@
 const changeDateReducer = (state, action) => {
-  const {dateType, date} = action;
+  const { dateType, date } = action;
   return {
     ...state,
     datePeriod: {
