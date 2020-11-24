@@ -5,6 +5,13 @@ const baseLoaded = (base) => {
   }
 }
 
+const requestError = (error) => {
+  return {
+    type: 'REQUEST_ERROR',
+    error
+  }
+}
+
 const sendBaseRequest = () => {
   return {
     type: 'SEND_BASE_REQUEST'
@@ -74,6 +81,7 @@ const checkboxAllToggle = (optionId, groupId) => {
 
 export {
   baseLoaded,
+  requestError,
   attributeDragEnd,
   attributeRelocate,
   relocateAllAttributes,

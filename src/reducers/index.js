@@ -17,6 +17,12 @@ const reducer = (state = initObject, action) => {
         ...state,
         requestSend: true
       }
+    case 'REQUEST_ERROR':
+      return {
+        ...state,
+        requestSend: false,
+        requestError: action.error.message
+      }
     case 'BASE_LOADED':
       return baseLoadedReducer( state, action );
     case 'ATTRIBUTE_DRAG_END':

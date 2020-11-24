@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { sendBaseRequest, baseLoaded } from '../../actions';
+import { sendBaseRequest, baseLoaded, requestError } from '../../actions';
 import BeerService from '../../services/beer-service';
 import getParamFromOptions from '../../utils/getParamsFromOptions';
 import Button from '@material-ui/core/Button';
@@ -52,7 +52,7 @@ const RequestButton = (props) => {
         props.baseLoaded( data );
       } )
       .catch( (error) => {
-        console.error( error.message );
+        props.requestError(error);
       } )
   }
 
@@ -78,7 +78,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   baseLoaded,
-  sendBaseRequest
+  sendBaseRequest,
+  requestError
 }
 
 export default connect( mapStateToProps, mapDispatchToProps )( RequestButton );
